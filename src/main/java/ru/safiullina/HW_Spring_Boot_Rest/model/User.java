@@ -1,10 +1,18 @@
 package ru.safiullina.HW_Spring_Boot_Rest.model;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+
 import java.util.Objects;
 
 public class User {
 
+    @NotBlank
+    @Size(min = 2, max = 20)
     private String user;
+
+    @NotBlank
+    @Size(min = 4)
     private String password;
 
     public User() {
