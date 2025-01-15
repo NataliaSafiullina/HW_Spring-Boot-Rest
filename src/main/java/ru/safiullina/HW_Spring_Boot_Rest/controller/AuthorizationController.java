@@ -44,7 +44,7 @@ public class AuthorizationController {
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<String> handMethodArgumentNotValidException(MethodArgumentNotValidException exception) {
-        System.out.println("handlerUnauthorizedUser");
+        System.out.println("handMethodArgumentNotValidException");
         return new ResponseEntity<>(exception.getMessage(), HttpStatus.METHOD_NOT_ALLOWED);
     }
 }
