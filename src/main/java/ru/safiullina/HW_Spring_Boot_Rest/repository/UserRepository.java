@@ -1,6 +1,10 @@
 package ru.safiullina.HW_Spring_Boot_Rest.repository;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import ru.safiullina.HW_Spring_Boot_Rest.exception.InvalidCredentials;
 import ru.safiullina.HW_Spring_Boot_Rest.model.Authorities;
 import ru.safiullina.HW_Spring_Boot_Rest.model.User;
 
@@ -23,6 +27,16 @@ public class UserRepository {
     }
 
     public List<Authorities> getUserAuthorities(String user, String password) {
-        return usersAuthorities.get(addUserAuthorities());
+        User oldUser = addUserAuthorities();
+        User newUser = new User(user, password);
+
+        if (oldUser.equals(newUser)) {
+            return usersAuthorities.get(oldUser);
+        }
+        else {
+            return null;
+        }
+
     }
+
 }

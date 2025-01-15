@@ -1,6 +1,9 @@
 package ru.safiullina.HW_Spring_Boot_Rest.service;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import ru.safiullina.HW_Spring_Boot_Rest.exception.InvalidCredentials;
 import ru.safiullina.HW_Spring_Boot_Rest.exception.UnauthorizedUser;
 import ru.safiullina.HW_Spring_Boot_Rest.model.Authorities;
@@ -37,4 +40,6 @@ public class AuthorizationService {
     private boolean isEmpty(List<?> str) {
         return str == null || str.isEmpty();
     }
+
+
 }
