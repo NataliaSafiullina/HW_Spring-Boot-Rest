@@ -12,12 +12,19 @@ import java.util.List;
 public class AuthorizationService {
     UserRepository userRepository;
 
+    // Конструктор сервиса, который получает экземпляр репозитория
+    public AuthorizationService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
     public List<Authorities> getAuthorities(String user, String password) {
         if (isEmpty(user) || isEmpty(password)) {
+            System.out.println("User name or password is empty");
             throw new InvalidCredentials("User name or password is empty");
         }
         List<Authorities> userAuthorities = userRepository.getUserAuthorities(user, password);
         if (isEmpty(userAuthorities)) {
+            System.out.println("Unknown user " + user);
             throw new UnauthorizedUser("Unknown user " + user);
         }
         return userAuthorities;

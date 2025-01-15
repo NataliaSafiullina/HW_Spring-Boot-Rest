@@ -12,8 +12,14 @@ import java.util.List;
 public class AuthorizationController {
     AuthorizationService service;
 
+    // Конструктор контроллера, который получает экземпляр сервиса
+    public AuthorizationController(AuthorizationService service) {
+        this.service = service;
+    }
+
     @GetMapping("/authorize")
     public List<Authorities> getAuthorities(@RequestParam("user") String user, @RequestParam("password") String password) {
+        System.out.println(user + " " + password);
         return service.getAuthorities(user, password);
     }
 }
