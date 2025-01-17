@@ -17,7 +17,7 @@ import java.util.List;
 
 @RestController
 public class AuthorizationController {
-    AuthorizationService service;
+    private final AuthorizationService service;
 
     // Конструктор контроллера, который получает экземпляр сервиса
     public AuthorizationController(AuthorizationService service) {

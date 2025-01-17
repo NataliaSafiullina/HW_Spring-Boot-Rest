@@ -12,7 +12,7 @@ import java.util.List;
 
 @Service
 public class AuthorizationService {
-    UserRepository userRepository;
+    private final UserRepository userRepository;
 
     // Конструктор сервиса, который получает экземпляр репозитория
     public AuthorizationService(UserRepository userRepository) {
