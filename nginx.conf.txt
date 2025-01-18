@@ -1,0 +1,29 @@
+http {
+    upstream backend {
+        server localhost:8080;
+        server localhost:8081;
+        server localhost:8082;
+    }
+
+    server {
+        listen       9999;
+        server_name  localhost;
+
+        # http://localhost:9999/authorize?user=nata&password=1234
+	location /authorize {
+		proxy_pass http://backend;
+        }
+
+	# http://localhost:9999/signin
+	location /signin {
+		root	html;
+	}
+
+	# http://localhost:9999/?user=nata&password=1234
+	location / {
+		proxy_pass http://localhost:8080/authorize;
+	}
+
+    }
+
+}
