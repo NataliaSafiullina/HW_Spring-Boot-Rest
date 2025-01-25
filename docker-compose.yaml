@@ -1,0 +1,7 @@
+version: '3'
+
+services:
+  spring-boot-rest:
+    image: 'spring-boot-rest'
+    ports:
+      - '8080:8080'
